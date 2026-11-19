@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4f6f1">
+<title>Hanoi field guide — late autumn north of Hoàn Kiếm Lake</title>
+<!-- Refactored from the modular Travelator guide: standalone, no external scripts or images. -->
+<style>
+:root{
+  color-scheme:light;
+  --accent:#286a8a;
+  --text-size:94%;
+
+  --accent-ink:color-mix(in oklab,var(--accent) 68%,#000);
+  --paper:color-mix(in oklab,var(--accent) 5%,#fafaf6);
+  --raise:color-mix(in oklab,var(--accent) 2%,#fff);
+  --tint:color-mix(in oklab,var(--accent) 9%,var(--paper));
+  --tint-strong:color-mix(in oklab,var(--accent) 18%,var(--paper));
+  --line:color-mix(in oklab,var(--accent) 18%,#dadad2);
+  --ink:color-mix(in oklab,var(--accent) 12%,#1a1c19);
+  --muted:color-mix(in oklab,var(--accent) 12%,#585c55);
+  --hero-bg:color-mix(in oklab,var(--accent) 13%,var(--paper));
+
+  --sun:#e3a73c;
+  --alert:#8c2f29;--alert-bg:#f8e7e2;
+  --caution-bg:#fbf0d8;
+
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Noto Serif",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+html{font-size:var(--text-size);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.62 var(--sans)}
+b,strong{font-weight:620}
+a{color:var(--accent-ink);text-decoration-line:underline;text-decoration-color:color-mix(in oklab,var(--accent) 45%,transparent);text-decoration-thickness:1px;text-underline-offset:.22em}
+a:hover{text-decoration-color:currentColor;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--accent-ink);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Hero ---------- */
+.hero-fold{background:var(--hero-bg);overflow:hidden}
+.hero-inner{display:block;max-width:56rem;margin:0 auto;padding:clamp(2.5rem,8vw,4.5rem) 1.25rem 0}
+.hero-summary{position:relative;max-width:56rem;margin:0 auto;padding-right:2.4rem;cursor:pointer}
+.hero-summary::after{position:absolute;right:1.25rem;top:50%;transform:translateY(-50%) rotate(45deg)}
+.hero-fold[open]>.hero-summary::after{transform:translateY(-35%) rotate(225deg)}
+.hero h1,.hero-summary h1{font:500 clamp(2.5rem,8vw,4.3rem)/1.05 var(--serif);letter-spacing:-.012em;margin:0 0 1.25rem;max-width:11em;text-wrap:balance}
+.hero-content{padding-top:0}
+.hero-notes{max-width:56rem;margin:0 auto;padding:0 1.25rem .25rem}
+.hero-lead{font-size:clamp(1.05rem,2.5vw,1.22rem);line-height:1.55;max-width:34rem;margin:0 0 1rem}
+.hero-stamp{font-size:.9rem;color:var(--muted);margin:0}
+.hero-art{display:block;width:100%;height:clamp(130px,18vw,300px);margin-top:1.5rem}
+.hero-art .sun{fill:var(--sun)}
+.hero-art .far{fill:color-mix(in oklab,var(--accent) 20%,var(--hero-bg))}
+.hero-art .mid{fill:color-mix(in oklab,var(--accent) 36%,var(--hero-bg))}
+.hero-art .near{fill:var(--paper)}
+
+/* ---------- Page frame ---------- */
+.wrap{max-width:56rem;margin:0 auto;padding:.5rem 1.25rem 9rem}
+
+/* Callouts */
+.verdict,.warning,.good{position:relative;max-width:48rem;margin:1.25rem 0;padding:1.05rem 1.3rem 1.1rem;border-radius:18px}
+.warning,.good{padding-left:3.5rem}
+.warning::before,.good::before{position:absolute;left:1.1rem;top:1.1rem;width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;font:700 .88rem/1 var(--sans);color:#fff}
+.warning{background:var(--alert-bg)}
+.warning::before{content:"!";background:var(--alert)}
+.good{background:var(--tint)}
+.good::before{content:"i";background:var(--accent-ink)}
+.verdict{background:var(--raise);border:1px solid var(--line);font-size:1.03rem}
+.verdict strong{display:block;font:600 1.2rem/1.3 var(--serif);margin-bottom:.3rem}
+
+/* Jump list */
+.toc{position:sticky;top:0;z-index:10;display:flex;flex-wrap:nowrap;align-items:center;gap:.35rem;overflow-x:auto;overscroll-behavior-x:contain;margin:1rem 0;padding:.3rem 0;background:var(--paper);scrollbar-width:thin}
+.toc a{flex:none;padding:.25rem .6rem;border:1px solid var(--line);border-radius:999px;background:var(--raise);color:var(--ink);font-size:.8rem;text-decoration:none;white-space:nowrap}
+.toc a:hover{background:var(--tint);border-color:color-mix(in oklab,var(--accent) 40%,var(--line))}
+
+/* ---------- Top-level sections ---------- */
+.top-fold{border-top:1px solid var(--line)}
+.top-fold:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:.5rem;height:.5rem;border-right:2px solid var(--accent-ink);border-bottom:2px solid var(--accent-ink);transform:translateY(-.12rem) rotate(45deg);transition:transform .2s ease}
+details[open]>summary::after{transform:translateY(.1rem) rotate(-135deg)}
+.top-fold>summary{position:sticky;top:var(--toc-height,0px);z-index:5;display:flex;align-items:center;gap:.35rem;min-height:3.75rem;padding:.6rem .15rem .6rem 0;background:var(--paper)}
+.top-fold>summary{flex-wrap:wrap}
+.top-fold>summary::after{order:2;margin:0 .5rem 0 .5rem}
+.top-fold .section-tools{order:3}
+.top-fold .heading-note{order:4}
+.top-fold .photo-strip{order:5}
+.top-fold[open]>summary{border-bottom:1px solid var(--line)}
+.top-fold[open]>summary>.photo-strip{display:none}
+.section-title{flex:1;min-width:0;font:600 clamp(1.4rem,3.6vw,1.8rem)/1.2 var(--serif);letter-spacing:-.006em}
+.top-fold>summary:hover .section-title{color:var(--accent-ink)}
+.top-fold>.section-content{padding:1.6rem 0 2.75rem}
+.section-content>:first-child{margin-top:0}
+.section-content>h3{font:600 1.3rem/1.25 var(--serif);margin:2.4rem 0 .5rem}
+.section-content p,.section-content li{max-width:68ch}
+.section-content p{margin:.85rem 0}
+.small{font-size:.9rem;color:var(--muted)}
+.photo-strip{display:flex;flex:0 0 100%;gap:.55rem;overflow-x:auto;padding:.25rem 0 .7rem;scrollbar-width:thin}
+.photo-thumb{flex:0 0 5rem;width:5rem;height:3.4rem;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--tint-strong);cursor:pointer}
+.photo-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.photo-thumb-missing{font-size:.75rem;font-weight:700;color:var(--muted)}
+.photo-thumb:focus-visible{outline-offset:2px}
+.heading-note{flex:0 0 100%;font-size:.9rem;font-weight:400;line-height:1.35;color:var(--muted)}
+
+/* Section tools (injected by script) */
+.section-tools{display:flex;gap:.1rem}
+.tool{display:grid;place-items:center;width:2.5rem;height:2.5rem;padding:0;border:0;border-radius:12px;background:transparent;color:var(--accent-ink);cursor:pointer}
+.tool:hover{background:var(--tint)}
+.tool[aria-pressed="true"]{background:var(--tint-strong)}
+.ic{width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Nested folds ---------- */
+.section-content details{margin:.75rem 0;border:1px solid var(--line);border-radius:16px;background:var(--raise)}
+.section-content details>summary{display:flex;align-items:center;gap:.9rem;padding:.95rem 1.15rem;font-weight:600;border-radius:15px;background:var(--raise)}
+.section-content details.region-fold>summary{position:sticky;top:calc(var(--toc-height,0px) + var(--section-sticky-height,3.75rem));z-index:4}
+.section-content details>summary .photo-strip{grid-column:1/-1}
+.section-content details>summary::after{margin-left:auto}
+.section-content details>summary:hover{background:var(--tint)}
+.section-content details[open]>summary{background:var(--tint);border-radius:15px 15px 0 0}
+.section-content details>.inside{padding:.5rem 1.35rem 1.4rem}
+.section-content details>.inside>:first-child{margin-top:.75rem}
+
+.region-fold>summary{display:grid!important;grid-template-columns:1fr auto;column-gap:.75rem;row-gap:.1rem;padding:.72rem 1rem}
+.region-fold>summary.is-stuck{padding:.5rem .85rem}
+.region-fold>summary .photo-strip{grid-column:1/-1}
+.region-fold>summary .heading-note{grid-column:1/-1}
+.region-fold>summary::after{grid-column:2;grid-row:1/3;align-self:center}
+.region-fold>summary.is-stuck::after{grid-row:1}
+.fold-name{font:600 1.2rem/1.3 var(--serif)}
+.fold-note{grid-column:1;font-size:.93rem;font-weight:400;color:var(--muted)}
+
+/* Region facts */
+.facts{margin:.5rem 0 1rem}
+.facts>div{display:grid;grid-template-columns:9.5rem 1fr;gap:1.25rem;padding:.95rem 0;border-top:1px solid var(--line)}
+.facts>div:first-child{border-top:0}
+.facts dt{font-size:.93rem;font-weight:620;color:var(--accent-ink)}
+.facts dd{margin:0;max-width:62ch}
+.facts>.gate{margin-top:.5rem;padding:1rem 1.15rem;border:0;border-radius:14px;background:var(--tint)}
+
+/* Photos */
+.section-content details.photo-fold{margin:1rem 0 .25rem;border:0;background:var(--tint)}
+.section-content details.photo-fold>summary{padding:.7rem 1rem;font-weight:500;font-size:.94rem;gap:.7rem}
+.section-content details.photo-fold[open]>summary{background:transparent}
+.photo-kind{display:none}
+.section-content details.photo-fold>.inside{padding:.25rem 1rem 1rem}
+figure{margin:0}
+figure img{display:block;width:100%;max-height:27rem;object-fit:cover;border-radius:12px;background:var(--tint-strong)}
+figcaption{max-width:60ch;margin-top:.7rem;font-size:.87rem;color:var(--muted)}
+figure.img-failed img{display:none}
+figure.img-failed::before{content:"This photo didn’t load. Use the source link below to see it online.";display:block;padding:1.6rem 1.25rem;border-radius:12px;background:var(--tint-strong);color:var(--muted);font-size:.92rem}
+.photo-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:.6rem;margin:1rem 0}.photo-gallery>details.photo-fold{min-width:0;margin:0;background:var(--tint)}.photo-gallery>details.photo-fold>summary{min-height:3rem}
+.photos-hidden .photo-fold{display:none!important}
+.photos-hidden .photo-strip{display:none!important}
+
+/* ---------- Cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15.5rem),1fr));gap:1rem;margin:1.25rem 0}
+.cards:has(>.card:nth-child(4):last-child){grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))}
+.card{padding:1.3rem 1.4rem 1.4rem;border-radius:20px;background:var(--tint)}
+.card h3{font:600 1.17rem/1.3 var(--serif);margin:.1rem 0 .55rem}
+.card p{margin:0}
+.card ul{margin:.3rem 0 0;padding-left:1.15rem}
+.card-check{background:var(--caution-bg)}
+.label{font-size:.86rem;font-weight:620;color:var(--accent-ink)}
+.gate-no{display:inline-block;margin-right:.4rem;padding:.08rem .6rem;border-radius:999px;background:var(--tint-strong);font-size:.8rem;font-weight:700}
+.card-check .label{color:#6d4a0c}
+
+/* ---------- Lists ---------- */
+ul,ol{margin:.85rem 0;padding-left:1.3rem}
+li+li{margin-top:.45rem}
+li::marker{color:var(--accent)}
+.steps{list-style:none;padding:0;counter-reset:step}
+.steps>li{position:relative;counter-increment:step;padding-left:2.6rem}
+.steps>li::before{content:counter(step);position:absolute;left:0;top:.08rem;display:grid;place-items:center;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--tint-strong);color:var(--accent-ink);font-size:.86rem;font-weight:700}
+.steps>li+li{margin-top:.8rem}
+.source-list{font-size:.93rem}
+.source-list li{overflow-wrap:anywhere}
+
+/* ---------- Tables ---------- */
+.table-wrap{overflow-x:auto;container-type:inline-size;margin:1.25rem 0;border:1px solid var(--line);border-radius:18px;background:var(--raise)}
+table{width:100%;min-width:42rem;border-collapse:collapse;font-size:.94rem}
+th{padding:.8rem 1rem;background:var(--tint);color:var(--muted);font-size:.85rem;font-weight:620;text-align:left;white-space:nowrap}
+td{padding:1rem;vertical-align:top;border-top:1px solid var(--line);overflow-wrap:break-word}
+td:first-child{white-space:nowrap}
+td:first-child b{font:600 1.08rem var(--serif)}
+
+/* ---------- Footer ---------- */
+.foot{margin-top:2.5rem;color:var(--muted);font-size:.9rem}
+.foot p{max-width:62ch}
+
+/* ---------- Dock ---------- */
+.dock{position:fixed;z-index:30;width:max-content;max-width:calc(100vw - 1rem);white-space:nowrap;left:50%;bottom:calc(.9rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:2px;padding:6px;border:1px solid var(--line);border-radius:999px;background:color-mix(in oklab,var(--raise) 92%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 32px -10px rgb(22 32 26/.35),0 2px 6px rgb(22 32 26/.08);font:500 14px/1 var(--sans)}
+.dock button{display:flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0;border:0;border-radius:999px;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.dock button:hover{background:var(--tint)}
+.dock button[aria-pressed="true"],.dock button[aria-expanded="true"]{background:var(--tint-strong)}
+.dock button[aria-disabled="true"]{opacity:.35;cursor:default}
+.dock .ic{width:20px;height:20px}
+.dock .lbl{display:none}
+.dock .sep{width:1px;height:24px;margin:0 4px;background:var(--line)}
+.dock .dot{width:20px;height:20px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--raise),0 0 0 3px var(--accent)}
+.dock .a-sm,.dock .a-lg{font-family:var(--serif);font-weight:600;line-height:1}
+.dock .a-sm{font-size:14px}.dock .a-lg{font-size:21px}
+.dock-color{position:relative}
+.swatches{position:absolute;left:0;bottom:calc(100% + 16px);display:flex;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:var(--raise);box-shadow:0 12px 32px -10px rgb(22 32 26/.35)}
+.swatches[hidden]{display:none}
+.dock .swatch{position:relative;width:36px;height:36px;min-width:36px;padding:0;background:var(--c)!important;border-radius:50%}
+.dock .swatch[aria-pressed="true"]{box-shadow:0 0 0 2px var(--raise),0 0 0 4px var(--c)}
+.swatch[aria-pressed="true"]::after{content:"";width:11px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+@media(min-width:760px){.dock .lbl{display:inline}.dock button.wide{padding:0 16px 0 14px}}
+
+/* ---------- Phones ---------- */
+@media(max-width:640px){
+  .wrap{padding-left:1rem;padding-right:1rem}
+  .hero-inner{padding-left:1rem;padding-right:1rem}
+  .hero-notes{padding-left:1rem;padding-right:1rem}
+  .hero-summary{padding-right:2rem}
+  .warning,.good{padding-left:3.3rem}
+  .section-content details>.inside{padding:.4rem 1.05rem 1.2rem}
+  .facts>div{grid-template-columns:1fr;gap:.2rem}
+  .table-wrap{overflow:visible;border:0;background:none;border-radius:0}
+  table{min-width:0}
+  table,tbody,tr,td{display:block;width:100%}
+  thead{display:block;position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  th{white-space:normal}
+  tr{margin:.8rem 0;padding:.35rem 1.05rem .7rem;border:1px solid var(--line);border-radius:18px;background:var(--raise)}
+  td{position:relative;display:block;padding:.45rem 0 .45rem 7.25rem;border:0}
+  td::before{content:attr(data-label);position:absolute;left:0;top:.55rem;width:6.5rem;color:var(--accent-ink);font-size:.82rem;font-weight:620;line-height:1.5}
+  td:first-child{margin-bottom:.35rem;padding:.65rem 0 .5rem;border-bottom:1px solid var(--line);white-space:normal}
+  td:first-child::before{display:none}
+  td:first-child b{font-size:1.25rem}
+}
+
+/* When a stacked table card gets narrow (phones at larger text sizes), put labels above values */
+@container (max-width:19rem){
+  td{padding-left:0}
+  td::before{position:static;display:block;width:auto;margin-bottom:.05rem}
+  td:first-child{padding-left:0}
+}
+
+@media print{
+  .dock,.section-tools,.toc{display:none!important}
+  .top-fold>summary,.section-content details>summary,.toc{position:static;background:none}
+  summary::after{display:none}
+  .hero-art{height:90px}
+  body{background:#fff}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+}
+
+.phone-script{margin:1rem 0;padding:1rem 1.15rem;border-left:4px solid var(--accent);background:var(--tint);border-radius:0 14px 14px 0;font-size:1.05rem}
+.phone-script p{margin:.25rem 0}
+.phone-script .small{margin-top:.65rem}
+.address{font-size:1.05rem}
+@media print{.hero-fold>summary{display:none}.hero-fold:not([open])>.hero-content{display:block}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-collapse" viewBox="0 0 24 24"><path d="M7 4.5l5 5 5-5"/><path d="M7 19.5l5-5 5 5"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M7 9.5l5-5 5 5"/><path d="M7 14.5l5 5 5-5"/></symbol>
+</svg>
+<details class="hero-fold" id="top" open>
+  <summary class="hero-summary"><span class="hero-inner"><h1>Hanoi field guide: late autumn north of Hoàn Kiếm Lake</h1></span></summary>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <p class="hero-lead">Use the lake as your compass: watch the city wake, eat through the Old Quarter, and take one quieter nature detour. In mid-November, Hanoi’s autumn is a subtle, sensory season—not a New England-style foliage show.</p>
+      <p class="hero-stamp">Field notes for 17–30 November 2026 · Event listings, access, weather, and air quality can change; check before setting out.</p>
+    </div>
+    <svg class="hero-art" viewBox="0 0 1200 190" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"><circle class="sun" cx="705" cy="70" r="36"/><g transform="translate(0 12) scale(1 .62)"><path class="far" d="M0 170C60 150 110 110 170 90C230 70 270 120 330 130C400 142 440 60 520 50C600 40 640 110 700 120C770 132 820 70 890 62C960 54 1010 120 1070 126C1120 130 1160 100 1200 90V400H0Z"/><path class="mid" d="M0 210C70 190 130 150 200 150C280 150 320 190 400 185C480 180 520 120 600 115C680 110 720 170 800 172C880 174 930 130 1000 128C1070 126 1130 170 1200 165V400H0Z"/><path class="near" d="M0 235C100 225 180 200 270 205C370 210 420 238 520 236C640 234 700 205 800 208C900 211 960 236 1060 234C1120 233 1160 225 1200 220V400H0Z"/></g></svg>
+    <div class="hero-notes"><div class="verdict"><strong>Best first move</strong>Start early at Hoàn Kiếm Lake, then follow your appetite into the lanes north of it. Keep the day in short loops with cafés and a ride-hail/taxi option between farther stops.</div><div class="warning"><b>Autumn, honestly:</b> Northern Vietnam calls September–November autumn. By late November, the signature fresh cốm season is mostly over; look for the lingering mood in cooler air, changing light, fallen leaves, flowers, and hot bowls instead.</div></div>
+  </div>
+</details>
+<main class="wrap">
+<nav class="toc" id="toc" aria-label="Sections"></nav>
+<details class="top-fold" id="rhythm" data-nav="A gentle day"><summary><span class="section-title" role="heading" aria-level="2">A gentle day, anchored on the lake</span></summary><div class="section-content">
+<div class="cards"><article class="card"><div class="label">Early</div><h3>Hoàn Kiếm wakes up</h3><p>Choose a short lakeside stretch, find a bench or café, and watch walkers, exercise groups, vendors, and the water before traffic builds.</p></article><article class="card"><div class="label">Late morning</div><h3>Old Quarter by appetite</h3><p>Pick one nearby lane and one dish. The old guild streets are north of the lake; browse at a human pace and pause often.</p></article><article class="card"><div class="label">Later</div><h3>One quiet detour</h3><p>Take a car to Trúc Bạch and West Lake, or stay close for a slower lake loop and a long café stop.</p></article></div>
+<p>Hoàn Kiếm is the easiest orientation point: the red Húc Bridge and Ngọc Sơn Temple sit at the lake’s north end. On weekends the lake-side pedestrian area becomes a public gathering space; expect crowds and performances as well as quieter corners. The Old Quarter’s historic streets extend north from here. <a href="https://vietnam.travel/things-to-do/explore-old-quarter-your-way/">Vietnam Tourism: explore the Old Quarter</a> · <a href="https://thanglong.chinhphu.vn/english/pedestrianizing-streets-to-be-expanded-110230629145414315.htm">Hanoi weekend pedestrian area</a>.</p>
+<div class="good"><b>Keep it easy:</b> Cross at marked crossings, move with the flow when the gap is clear, and don’t expect every sidewalk to be smooth or unobstructed. If a crossing or block feels like too much, return to a café and use a car for the next leg.</div>
+</div></details>
+<details class="top-fold" id="nature" data-nav="Nature, close and farther"><summary><span class="section-title" role="heading" aria-level="2">Nature, close by and a little farther out</span></summary><div class="section-content">
+<h3>Close: notice the lake, not just the landmark</h3><p>Walk a partial Hoàn Kiếm circuit at first light or near sunset. Look for reflections, banyan and shade trees, water birds, and the contrast between still water and the city waking up. Sit for ten minutes; this is a useful nature stop even if you do not complete the loop.</p>
+<h3>Quieter half-day: Trúc Bạch and West Lake</h3><p>Ride to Trúc Bạch, then take in the open water and Thanh Niên road between the two lakes. Tran Quoc Pagoda is a distinctive lakeside cultural stop. Keep the outing short and use a car between points if pavements, heat, or traffic wear you down. <a href="https://2025.vietnam.travel/en/vietnamese-ethiopian-pms-visit-tran-quoc-pagoda/">Vietnam Tourism on Trúc Bạch, West Lake, and Trấn Quốc</a>.</p>
+<h3>More adventurous: Long Biên and the river gardens</h3><p>For a working-landscape view, go with a local guide to Long Biên Bridge and the Red River agricultural plots often called Banana Island. Vietnam Tourism describes urban gardens and small homes along the river. The bridge has active rail and road traffic; don’t treat it as a casual, fully separated walking promenade, and skip the island descent if paths or river conditions look uncertain. <a href="https://vietnam.travel/things-to-do/3-walking-tours-ha-noi/">Vietnam Tourism walking routes</a>.</p>
+<div class="warning"><b>Air check:</b> Look at the latest city air-quality reading before planning a long outdoor walk. On a hazy or poor-air day, shorten the route and choose a shaded courtyard, indoor museum, or café.</div>
+</div></details>
+<details class="top-fold" id="food" data-nav="Eat the neighborhood"><summary><span class="section-title" role="heading" aria-level="2">Eat the neighborhood, one bowl at a time</span></summary><div class="section-content">
+<ul><li><b>Phở bò</b> for a breakfast broth; ask for herbs and lime on the side, then season gradually.</li><li><b>Bún chả</b> at lunch: grilled pork, rice noodles, herbs, and dipping broth. Watch how nearby diners combine each bite.</li><li><b>Bánh cuốn</b> for delicate steamed rice rolls, often filled with pork and mushrooms and served with herbs and fish-sauce dip.</li><li><b>Chả cá</b> for a more leisurely meal of turmeric-seasoned fish with dill and scallions.</li><li><b>Cà phê trứng</b> (egg coffee) or strong iced coffee for a sit-down pause; order water too if you want it.</li></ul>
+<p>Choose a busy place with steady turnover, point to what you want when menus are hard to parse, and carry small cash for street-side meals. Let a meal take time: herbs, pickles, shared tables, and the rhythm of a tiny kitchen are part of the experience.</p>
+<div class="good"><b>Late-autumn taste:</b> Ask whether fresh <i>cốm</i> (young green-rice flakes) is still available. Its short Hanoi season generally runs from late September to early November, so by mid-November you may find sweets made with it rather than fresh flakes—or none at all. Try <i>chả cốm</i> or <i>xôi cốm</i> if offered. <a href="https://nongthon.vietnamtourism.gov.vn/com-ha-noi-the-elegant-autumn-specialty-of-the-capital/?lang=en">Vietnam Tourism on cốm</a>.</div>
+</div></details>
+<details class="top-fold" id="culture" data-nav="Local life and culture"><summary><span class="section-title" role="heading" aria-level="2">Meet local life without turning it into a checklist</span></summary><div class="section-content">
+<ul><li><b>Watch the lake routine:</b> In the morning, observe tai chi and exercise from the edge; ask before photographing someone closely.</li><li><b>Follow a working street:</b> Notice what each lane sells and repairs. Buy a small useful object or snack, and give shopkeepers room to work.</li><li><b>Step into one heritage place:</b> Ngọc Sơn Temple or the preserved Mã Mây house gives context to the lake and old merchant quarter. Check current hours and entry details locally.</li><li><b>Take a seated culture break:</b> Consider a water-puppet performance; check the theatre’s current schedule and book directly if you want a specific time.</li></ul>
+<div class="phone-script"><p><b>Useful phrases</b></p><p><span lang="vi">Xin chào</span> — Hello · <span lang="vi">Cảm ơn</span> — Thank you · <span lang="vi">Ngon quá</span> — Very delicious · <span lang="vi">Tính tiền, cảm ơn</span> — The bill, please.</p></div>
+<p><b>Near-term event:</b> Hanoi’s event portal lists Vietnam Culture Day around Hoàn Kiếm Lake for 20–21 November 2026, including a heritage parade, performances, craft and áo dài displays; the opening ceremony is listed for Saturday 21 November. Expect crowds, check the live schedule and access arrangements, and treat participation as optional. <a href="https://hanoigo.com.vn/en/event/ngay-van-hoa-viet-nam-tai-ha-noi">Event details</a> · <a href="https://hanoigo.com.vn/en/event/khai-mac-ngay-van-hoa-viet-nam">Opening ceremony details</a>.</p>
+</div></details>
+<details class="top-fold" id="cash-usd" data-nav="USD hundreds in Hanoi"><summary><span class="section-title" role="heading" aria-level="2">Need crisp US$100 notes? Start with a bank</span></summary><div class="section-content">
+<div class="verdict"><strong>Best first move</strong>Call a licensed bank before going. SeABank lists a Hanoi contact address at 198 Trần Quang Khải and customer hotline 1900 555 587; call to confirm the nearest counter that handles cash USD. Ask whether it can sell US$100 notes to a foreign passport holder, what proof of purpose it needs, and whether it can accept an international debit or credit card. Its public guidance does not confirm card-funded cash sales, so do not make the trip assuming a card swipe will work.</div>
+<p><b>Why this is constrained:</b> Under Vietnam’s foreign-exchange rules, ordinary currency-exchange agents may buy foreign cash from individuals but generally may not sell it back to customers; the narrow sell-to-customer exception is at international border-gate departure areas. A bank is a different route and may sell foreign currency for an eligible, documented purpose. Ask the bank directly about her circumstances and current requirements. <a href="https://congbao.chinhphu.vn/van-ban/thong-tu-so-23-2026-tt-nhnn-469760.htm">State Bank Circular 23/2026/TT-NHNN (effective 10 June 2026)</a> · <a href="https://sbv.gov.vn/documents/d/sbv_portal/587242.pdf?download=true">State Bank of Vietnam — National Risk report</a> · <a href="https://www.seabank.com.vn/en/tin-tuc/tu-van-dich-vu/tu-van--meo/doi-tien-do">SeABank — currency exchange guidance and Hanoi contact</a>.</p>
+<div class="phone-script"><p><b>Call or show this message</b></p><p lang="vi">Xin chào. Tôi là khách nước ngoài và muốn mua [số lượng] tờ 100 đô la Mỹ. Tôi có thẻ quốc tế. Chi nhánh có bán tiền mặt đô la Mỹ cho khách như tôi không? Tôi cần giấy tờ gì để chứng minh mục đích? Có thể thanh toán bằng thẻ không, hay phải trả bằng đồng Việt Nam? Các tờ 100 đô có mới, sạch và không bị viết hoặc đóng dấu không?</p><p class="small">“Hello. I’m a foreign visitor and want to buy [quantity] US$100 notes. I have an international card. Can this branch sell USD cash to a customer like me? What documents do I need to show the purpose? Can I pay by card, or must I pay in Vietnamese dong? Are the US$100 notes new, clean, and free of writing or stamps?”</p></div>
+<ul><li><b>If the bank says yes:</b> Confirm the exact number and condition of $100 bills, card acceptance and any card surcharge, required documents, rate, and total cost before leaving. Bring passport and the documents they request; keep the receipt.</li><li><b>If it requires VND:</b> With no ATM-fee reimbursement, include both the local ATM fee and the card issuer’s foreign cash/advance charges in the total. A credit-card cash withdrawal can carry a separate cash-advance fee and interest; check the issuer before using it. Skip the withdrawal if the total cost is not acceptable.</li><li><b>If declined or unclear:</b> Don’t try an ordinary jewelry-shop exchange counter; licensed agents generally cannot sell USD cash to customers in Hanoi. Arrange the notes through a licensed bank before the next leg instead.</li><li><b>At handoff:</b> Count the notes at the counter and inspect each one for tears, heavy wear, writing, stamps, or tape. Ask the bank to replace any note that does not meet the receiving party’s condition rules; those rules vary by destination.</li></ul>
+<p class="small">No Hanoi bank has publicly confirmed here that it will accept a foreign card directly for US$100 cash notes. The branch call is the decision point; do not treat airport-agent rules or a bank’s general exchange service as confirmation.</p>
+</div></details>
+<details class="top-fold" id="autumn" data-nav="What autumn remains"><summary><span class="section-title" role="heading" aria-level="2">What “autumn” can still mean in late November</span></summary><div class="section-content">
+<p>In northern Vietnam, autumn is commonly described as September through November, but it is not primarily a leaf-color spectacle. The season is sensed in a gentler shift in air, clearer intervals, and the city’s daily rhythms. By 17 November, you are in the tail end: weather can still swing from warm and humid to cool, rainy, or breezy, so let the day’s conditions set the pace. <a href="https://vietnam.travel/things-to-do/feel-autumn-vietnam/">Vietnam Tourism on autumn in northern Vietnam</a>.</p>
+<ul><li><b>Look up:</b> Catch soft morning light, leaves collecting at the curb, and the first cooler evenings around the lake.</li><li><b>Look for flowers:</b> White daisy bundles (<i>cúc họa mi</i>) are a November-season sight in Hanoi; look for them with flower sellers, without making a special trip depend on them. <a href="https://thanglong.chinhphu.vn/ha-noi-don-mua-cuc-hoa-mi-10324543.htm">Hanoi seasonal flower report</a>.</li><li><b>Eat for the weather:</b> Choose a hot broth, ginger-scented sweet soup, or tea when the air turns cool. These may feel more seasonally true than searching for dramatic foliage.</li><li><b>Accept what has passed:</b> Fresh cốm and Hanoi’s major autumn festival window are largely behind you. A late-season taste or a local event is a bonus, not a promise.</li></ul>
+<div class="verdict"><strong>A good autumn moment</strong>Take a lake-side seat after a breezy walk, order something hot, and watch the evening settle over the water. The meaning is in the transition and street life, not in finding peak color.</div>
+</div></details>
+<details class="top-fold" id="fieldnotes" data-nav="Practical field notes"><summary><span class="section-title" role="heading" aria-level="2">Practical field notes</span></summary><div class="section-content">
+<ul><li><b>Clothing:</b> Light layers, comfortable shoes, and a compact rain shell; late-November mornings and evenings can feel much cooler than midday.</li><li><b>Timing:</b> Go early for calmer lake scenes; use a café break around the busiest or warmest part of the day. Weekend lake streets are livelier and more crowded.</li><li><b>Getting around:</b> Use a licensed taxi or a ride-hailing app for longer hops. Agree on the destination pin before boarding; retain the hotel address in Vietnamese.</li><li><b>Cash and cards:</b> Keep small VND notes for small food stalls and market purchases; ask the price before ordering when it is not displayed.</li><li><b>Plan B:</b> If rain, poor air, or fatigue changes the day, choose one indoor heritage stop and a nearby meal, then return to the lake only if conditions improve.</li></ul>
+<p class="small">This is a flexible neighborhood field guide, not a promise of current opening hours, event access, air quality, or seasonal availability. Recheck locally on the day.</p>
+</div></details>
+<details class="top-fold" id="sources" data-nav="Sources and live checks"><summary><span class="section-title" role="heading" aria-level="2">Sources and live checks</span></summary><div class="section-content">
+<p>Place and seasonal guidance checked 17 November 2026. Use event and weather listings as a prompt to verify before leaving.</p>
+<ol class="source-list"><li><a href="https://vietnam.travel/things-to-do/explore-old-quarter-your-way/">Vietnam Tourism — Explore the Old Quarter</a>: lake, Ngọc Sơn, and the historic lanes north of the lake.</li><li><a href="https://vietnam.travel/things-to-do/3-walking-tours-ha-noi/">Vietnam Tourism — Three walking routes</a>: Long Biên Bridge and Red River gardens.</li><li><a href="https://2025.vietnam.travel/en/vietnamese-ethiopian-pms-visit-tran-quoc-pagoda/">Vietnam Tourism — Trấn Quốc Pagoda</a>: West Lake and Trúc Bạch setting.</li><li><a href="https://vietnam.travel/things-to-do/feel-autumn-vietnam/">Vietnam Tourism — Feel Autumn in Vietnam</a> and <a href="https://nongthon.vietnamtourism.gov.vn/com-ha-noi-the-elegant-autumn-specialty-of-the-capital/?lang=en">Hanoi cốm</a>, and <a href="https://hanoicapital.chinhphu.vn/english/ha-noi-autumn-festival-2026-to-showcase-capitals-seasonal-charm-110260917103918374.htm">Hà Nội Autumn Festival 2026</a>: seasonal framing, the short cốm window, and the earlier festival dates.</li><li><a href="https://hanoigo.com.vn/en/event/ngay-van-hoa-viet-nam-tai-ha-noi">Hà Nội Go — Vietnam Culture Day</a> and <a href="https://thanglong.chinhphu.vn/english/pedestrianizing-streets-to-be-expanded-110230629145414315.htm">Viet Nam Government Portal — weekend pedestrian area</a>: event and public-space context.</li><li><a href="https://moitruongthudo.vn/english?site_id=15">Hanoi Environmental Monitoring Portal</a>: check current local air-quality readings before extended outdoor activity.</li><li><a href="https://congbao.chinhphu.vn/van-ban/thong-tu-so-23-2026-tt-nhnn-469760.htm">State Bank Circular 23/2026/TT-NHNN</a>, <a href="https://sbv.gov.vn/documents/d/sbv_portal/587242.pdf?download=true">State Bank of Vietnam — National Risk report</a>, and <a href="https://www.seabank.com.vn/en/tin-tuc/tu-van-dich-vu/tu-van--meo/doi-tien-do">SeABank — currency-exchange guidance</a>: limits on exchange-agent sales, general bank service, and a Hanoi contact to call before visiting.</li></ol>
+<p class="small">Details, weather, air quality, event schedules, transport, and opening hours can change. Confirm locally; shorten or switch plans when conditions call for it.</p>
+</div></details>
+<footer class="foot"><p>Standalone Hanoi field guide adapted from the modular Travelator layout. It does not update itself.</p><p><a href="#top">Back to top</a></p></footer>
+</main>
+<aside class="dock" aria-label="Reading controls">
+  <div class="dock-color"><button type="button" id="color-toggle" aria-expanded="false" aria-controls="swatches" aria-label="Main color" title="Main color"><span class="dot" aria-hidden="true"></span></button><div class="swatches" id="swatches" role="group" aria-label="Main color" hidden><button type="button" class="swatch" data-color="#286a8a" data-name="Blue" style="--c:#286a8a" aria-label="Blue" title="Blue" aria-pressed="false"></button><button type="button" class="swatch" data-color="#2d6a4f" data-name="Pine" style="--c:#2d6a4f" aria-label="Pine" title="Pine" aria-pressed="true"></button><button type="button" class="swatch" data-color="#8a4f72" data-name="Plum" style="--c:#8a4f72" aria-label="Plum" title="Plum" aria-pressed="false"></button><button type="button" class="swatch" data-color="#b05c32" data-name="Persimmon" style="--c:#b05c32" aria-label="Persimmon" title="Persimmon" aria-pressed="false"></button></div></div>
+  <span class="sep" aria-hidden="true"></span><button type="button" id="fold-toggle" class="wide" title="Collapse all"><svg class="ic" aria-hidden="true"><use href="#i-collapse"/></svg><span class="lbl">Collapse all</span></button><span class="sep" aria-hidden="true"></span><button type="button" id="text-smaller" aria-label="Smaller text" title="Smaller text"><span class="a-sm" aria-hidden="true">A</span></button><button type="button" id="text-larger" aria-label="Larger text" title="Larger text"><span class="a-lg" aria-hidden="true">A</span></button><span class="sr-only" id="control-status" aria-live="polite"></span>
+</aside>
+<script>
+(()=>{
+ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+ const root=document.documentElement,live=$('#control-status'),key='hanoi-field-guide-';
+ const read=k=>{try{return localStorage.getItem(key+k)}catch{return null}},save=(k,v)=>{try{localStorage.setItem(key+k,String(v))}catch{}};
+ const say=t=>{live.textContent=t},sections=$$('.top-fold'),toc=$('#toc');
+ sections.forEach(s=>{const a=document.createElement('a');a.href='#'+s.id;a.textContent=s.dataset.nav||$('.section-title',s).textContent;toc.append(a)});
+ const colorBtn=$('#color-toggle'),pop=$('#swatches'),swatches=$$('.swatch',pop);
+ function setAccent(hex,announce){if(!swatches.some(s=>s.dataset.color===hex))return;root.style.setProperty('--accent',hex);swatches.forEach(s=>s.setAttribute('aria-pressed',String(s.dataset.color===hex)));save('accent',hex);if(announce)say('Color: '+swatches.find(s=>s.dataset.color===hex).dataset.name)}
+ function closePop(focus){pop.hidden=true;colorBtn.setAttribute('aria-expanded','false');if(focus)colorBtn.focus()}
+ colorBtn.addEventListener('click',()=>{const open=pop.hidden;pop.hidden=!open;colorBtn.setAttribute('aria-expanded',String(open))});
+ swatches.forEach(s=>s.addEventListener('click',()=>setAccent(s.dataset.color,true)));
+ document.addEventListener('click',e=>{if(!pop.hidden&&!e.target.closest('.dock-color'))closePop(false)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden)closePop(true)});
+ setAccent(read('accent')||'#2d6a4f',false);
+ const sizes=[88,94,100,106,112,119,125,137],smaller=$('#text-smaller'),larger=$('#text-larger');let level=parseInt(read('size'),10);if(Number.isNaN(level))level=1;level=Math.max(0,Math.min(sizes.length-1,level));
+ function setSize(i,announce){level=Math.max(0,Math.min(sizes.length-1,i));root.style.setProperty('--text-size',sizes[level]+'%');smaller.setAttribute('aria-disabled',String(level===0));larger.setAttribute('aria-disabled',String(level===sizes.length-1));save('size',level);if(announce)say('Text size '+sizes[level]+' percent')}
+ smaller.addEventListener('click',()=>setSize(level-1,true));larger.addEventListener('click',()=>setSize(level+1,true));setSize(level,false);
+ let expanded=false;const fold=$('#fold-toggle');fold.addEventListener('click',()=>{expanded=!expanded;sections.forEach(s=>s.open=expanded);fold.title=expanded?'Expand all':'Collapse all';fold.querySelector('.lbl').textContent=expanded?'Expand all':'Collapse all';fold.querySelector('use').setAttribute('href',expanded?'#i-expand':'#i-collapse');say(expanded?'All sections expanded':'All sections collapsed')});
+ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{const target=$(a.getAttribute('href'));if(target?.matches('.top-fold'))target.open=true}));
+ window.addEventListener('beforeprint',()=>sections.forEach(s=>{s.dataset.wasOpen=String(s.open);s.open=true}));window.addEventListener('afterprint',()=>sections.forEach(s=>s.open=s.dataset.wasOpen==='true'));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1355 @@
+{
+   "WFWorkflowMinimumClientVersionString": "1106",
+   "WFWorkflowMinimumClientVersion": 1106,
+   "WFWorkflowIcon": {
+      "WFWorkflowIconStartColor": 4282601983,
+      "WFWorkflowIconGlyphNumber": 59823
+   },
+   "WFWorkflowClientVersion": "5114.0.6.204",
+   "WFWorkflowOutputContentItemClasses": [
+      "WFStringContentItem"
+   ],
+   "WFWorkflowHasOutputFallback": false,
+   "WFWorkflowActions": [
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": "Travelator",
+            "CustomOutputName": "Travelator",
+            "UUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 0,
+            "GroupingIdentifier": "5581E2BF-627B-4485-BAC5-C434F992A6A1",
+            "UUID": "8284A5FA-1546-4160-8279-3D7F661F855E"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                  "Type": "ActionOutput",
+                  "OutputName": "Travelator"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "shortcut.shortcut"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": {
+               "Value": {
+                  "string": "This is the travelator “source code”. It is an Apple Shortcut. However, all remaining comments are directed towards the Shortcuts editing user.\n\nif device is iPhone, look for a note called “1” containing “\uFFFC”. If it doesn’t exist, create home screen shortcut and note\n\nstop, draw attention to home shortcut, assume user taps it",
+                  "attachmentsByRange": {
+                     "{60, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "F8EC48FB-A8D1-4E23-B5A6-07A15201AE09",
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "Type": "DeviceDetails",
+                     "Aggrandizements": [
+                        {
+                           "Type": "WFPropertyVariableAggrandizement",
+                           "PropertyName": "Device Type"
+                        }
+                     ]
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "UUID": "B1317E59-FE00-43CD-B6A1-68C743085974",
+            "WFEnumeration": "iPhone",
+            "WFCondition": 4
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.filter.notes",
+         "WFWorkflowActionParameters": {
+            "WFContentItemFilter": {
+               "Value": {
+                  "WFActionParameterFilterPrefix": 1,
+                  "WFContentPredicateBoundedDate": false,
+                  "WFActionParameterFilterTemplates": [
+                     {
+                        "Operator": 99,
+                        "Values": {
+                           "Unit": 4,
+                           "String": {
+                              "Value": {
+                                 "string": "\uFFFC",
+                                 "attachmentsByRange": {
+                                    "{0, 1}": {
+                                       "VariableName": "shortcut.shortcut",
+                                       "Type": "Variable"
+                                    }
+                                 }
+                              },
+                              "WFSerializationType": "WFTextTokenString"
+                           }
+                        },
+                        "Removable": true,
+                        "Property": "Name"
+                     }
+                  ]
+               },
+               "WFSerializationType": "WFContentPredicateTableTemplate"
+            },
+            "UUID": "DE6378FA-8046-4C72-9488-74C227CA9179",
+            "AppIntentDescriptor": {
+               "ActionRequiresAppInstallation": true,
+               "BundleIdentifier": "com.apple.Notes",
+               "AppIntentIdentifier": "NoteEntity",
+               "Name": "Notes",
+               "TeamIdentifier": "0000000000"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "Type": "ActionOutput",
+                     "OutputName": "Note",
+                     "OutputUUID": "DE6378FA-8046-4C72-9488-74C227CA9179",
+                     "Aggrandizements": [
+                        {
+                           "Type": "WFPropertyVariableAggrandizement",
+                           "PropertyName": "Name"
+                        }
+                     ]
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "UUID": "30F512FB-25AD-4163-8A1F-E073ED971DB6",
+            "GroupingIdentifier": "40FC9734-B5B1-47FE-A66F-F02035041AE4",
+            "WFCondition": 101
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": "1",
+            "CustomOutputName": "1",
+            "UUID": "E93A27D8-9642-44A3-9462-AE2A035C4DBC"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+         "WFWorkflowActionParameters": {
+            "WFURLActionURL": "https://raw.githubusercontent.com/cubbage/modular/refs/heads/main/dance_sail_sunset.png",
+            "UUID": "889EF59A-BF89-4713-AAB6-B5C0C5FA6B7C"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.documentpicker.save",
+         "WFWorkflowActionParameters": {
+            "WFFolder": {
+               "fileLocation": {
+                  "WFFileLocationType": "Shortcuts",
+                  "fileProviderDomainID": "com.apple.CloudDocs.iCloudDriveFileProvider/E6A0BF20-9467-4D78-9C88-E63CDFBF392B",
+                  "relativeSubpath": "",
+                  "appContainerBundleIdentifier": "com.apple.shortcuts",
+                  "crossDeviceItemID": "docs.icloud.com:com.apple.CloudDocs/documents/36809db38ad38ed4358e9e4e142ca8a4b42622ac"
+               },
+               "filename": "Documents",
+               "displayName": "Shortcuts"
+            },
+            "WFAskWhereToSave": false,
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "889EF59A-BF89-4713-AAB6-B5C0C5FA6B7C",
+                  "Type": "ActionOutput",
+                  "OutputName": "URL"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "033ABFD6-4DAF-414F-9C9A-5DFE257E5CD7",
+            "WFSaveFileOverwrite": true,
+            "WFFileDestinationPath": {
+               "Value": {
+                  "string": "\uFFFC/icon.png",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": "💃🏾 Anika.go",
+            "CustomOutputName": "Anika.go",
+            "UUID": "0BB52A5F-6280-4230-8B5B-CE5380C91837"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.returntohomescreen",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "com.apple.shortcuts.AddShortcutToHomeScreenAction",
+         "WFWorkflowActionParameters": {
+            "AppIntentDescriptor": {
+               "TeamIdentifier": "0000000000",
+               "BundleIdentifier": "com.apple.shortcuts",
+               "Name": "Shortcuts",
+               "AppIntentIdentifier": "AddShortcutToHomeScreenAction"
+            },
+            "UUID": "F0658918-C639-4FDB-9EEA-798A5877AB00",
+            "image": {
+               "Value": {
+                  "OutputUUID": "033ABFD6-4DAF-414F-9C9A-5DFE257E5CD7",
+                  "Type": "ActionOutput",
+                  "OutputName": "Saved File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "shortcut": {
+               "Value": {
+                  "VariableName": "shortcut.shortcut",
+                  "Type": "Variable"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "title": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "0BB52A5F-6280-4230-8B5B-CE5380C91837",
+                        "Type": "ActionOutput",
+                        "OutputName": "Anika.go"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "com.apple.mobilenotes.SharingExtension",
+         "WFWorkflowActionParameters": {
+            "WFCreateNoteInput": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "E93A27D8-9642-44A3-9462-AE2A035C4DBC",
+                        "Type": "ActionOutput",
+                        "OutputName": "1"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "AppIntentDescriptor": {
+               "TeamIdentifier": "0000000000",
+               "BundleIdentifier": "com.apple.Notes",
+               "Name": "Notes",
+               "AppIntentIdentifier": "CreateNoteLinkAction"
+            },
+            "UUID": "FABBA6E3-ADB4-4EBD-B57E-BB3CD2715506",
+            "name": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "VariableName": "shortcut.shortcut",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "OpenWhenRun": false
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.alert",
+         "WFWorkflowActionParameters": {
+            "WFAlertActionMessage": {
+               "Value": {
+                  "string": "\uFFFC added to Home Screen!",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "0BB52A5F-6280-4230-8B5B-CE5380C91837",
+                        "Type": "ActionOutput",
+                        "OutputName": "Anika.go"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.exit",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "40FC9734-B5B1-47FE-A66F-F02035041AE4",
+            "UUID": "678965D2-6FD8-4EE2-A38E-EAB32ADFA413"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "F8EC48FB-A8D1-4E23-B5A6-07A15201AE09",
+            "UUID": "A3C8C4F0-F1AC-447F-B7AA-FCC95B8B40FD"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.date",
+         "WFWorkflowActionParameters": {
+            "UUID": "3659807C-8753-4096-8763-EEEE8C1DDB50"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "5581E2BF-627B-4485-BAC5-C434F992A6A1",
+            "UUID": "21B7B62F-7A15-4342-AC9C-C70822733213"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 0,
+            "GroupingIdentifier": "C0A79ECC-69AD-4FCC-84D3-AFD46648F981",
+            "UUID": "1EC4E6E1-E108-473F-BFB2-F9EF0FA0AE51"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": "0. update timestamp and paste it identically into version.txt, which is downloaded and saved to Shortcuts/travelator/version_yyyyMMdd_HHmmss.txt\n\n1. share shortcut to icloud and save the URL to https://raw.githubusercontent.com/cubbage/modular/refs/heads/main/latest.txt\n\n2. when the shortcut runs, it’s then matched against the timestamp below, and if the counted matches <1, the sharelink is retrieved, the shortcut is installed, and it should overwrite the value below, ending the update loop.\n\nmodifying the shortcut without updating the timestamp on the gh server is okay, any new dependencies/enhancements obviously won’t be pushed. \n\nbe careful NOT TO OVERWRITE YOUR OWN LOCAL COPY with an “earlier root” and lose all shortcut enhancements, confusingly.\n"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": "\nTODO: \n\n- deploy a “kernel” shortcut with minimal need for enhancement, to handle the essentials\n- make it “crash proof” by passing preserved state objects in modular fashion, instead of “one runtime to rule them—“ERR\n- put as much of the rest of the logic as possible into json-/soft-updatable tree-like flows, make the loop more sophisticated with branching, multiple content types, messaging and ad-hoc updating, etc. \n- offload local, live enhancements to onboard Siri/Foundation models, and unify the “prompt” UI with messaging g / updating on local state\n"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": "20261030_055333",
+            "CustomOutputName": "Local version",
+            "UUID": "F8608716-5526-437E-B495-70A518572C14"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "F8608716-5526-437E-B495-70A518572C14",
+                  "Type": "ActionOutput",
+                  "OutputName": "Local version"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "localVersion"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "C0A79ECC-69AD-4FCC-84D3-AFD46648F981",
+            "UUID": "C81B45EB-0B24-4E61-8BBE-2132F123A5AD"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 0,
+            "GroupingIdentifier": "6D913572-722F-418C-81A3-1CA301E98714",
+            "UUID": "3894775B-8DB6-4506-9DA8-BD45953ADF8A"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": {
+               "Value": {
+                  "string": "fetch version.txt for comparison to \uFFFC/ \uFFFC",
+                  "attachmentsByRange": {
+                     "{36, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     },
+                     "{39, 1}": {
+                        "OutputUUID": "F8608716-5526-437E-B495-70A518572C14",
+                        "Type": "ActionOutput",
+                        "OutputName": "Local version"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+         "WFWorkflowActionParameters": {
+            "WFURLActionURL": "https://raw.githubusercontent.com/cubbage/modular/refs/heads/main/version.txt",
+            "UUID": "E9AA18AF-06AE-471B-B5FB-AD2354DF8F5B"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.documentpicker.save",
+         "WFWorkflowActionParameters": {
+            "WFAskWhereToSave": false,
+            "WFFileDestinationPath": {
+               "Value": {
+                  "string": "\uFFFC/version_\uFFFC.txt",
+                  "attachmentsByRange": {
+                     "{10, 1}": {
+                        "Type": "ActionOutput",
+                        "OutputName": "Date",
+                        "OutputUUID": "3659807C-8753-4096-8763-EEEE8C1DDB50",
+                        "Aggrandizements": [
+                           {
+                              "WFDateFormatStyle": "Custom",
+                              "Type": "WFDateFormatVariableAggrandizement",
+                              "WFDateFormat": "yyyyMMdd_hhmmss",
+                              "WFISO8601IncludeTime": false
+                           }
+                        ]
+                     },
+                     "{0, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "162BF33B-327B-41F4-96E9-C798D886A697",
+            "WFSaveFileOverwrite": true,
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "E9AA18AF-06AE-471B-B5FB-AD2354DF8F5B",
+                  "Type": "ActionOutput",
+                  "OutputName": "URL"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "CustomOutputName": "version.txt",
+            "WFFolder": {
+               "fileLocation": {
+                  "WFFileLocationType": "Shortcuts",
+                  "fileProviderDomainID": "com.apple.CloudDocs.iCloudDriveFileProvider/E6A0BF20-9467-4D78-9C88-E63CDFBF392B",
+                  "relativeSubpath": "",
+                  "appContainerBundleIdentifier": "com.apple.shortcuts",
+                  "crossDeviceItemID": "docs.icloud.com:com.apple.CloudDocs/documents/36809db38ad38ed4358e9e4e142ca8a4b42622ac"
+               },
+               "filename": "Documents",
+               "displayName": "Shortcuts"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.detect.text",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "162BF33B-327B-41F4-96E9-C798D886A697",
+                  "Type": "ActionOutput",
+                  "OutputName": "version.txt"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "C5C5886A-D93E-4733-B2DE-13699D9D88B9"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "C5C5886A-D93E-4733-B2DE-13699D9D88B9",
+                  "Type": "ActionOutput",
+                  "OutputName": "Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "version.txt"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.text.match",
+         "WFWorkflowActionParameters": {
+            "WFMatchTextPattern": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "VariableName": "localVersion",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "text": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "VariableName": "version.txt",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "51068AFE-D862-4A41-9048-B13DC81CAB8A"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": "count matching strings. if <1, enter update flow"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.count",
+         "WFWorkflowActionParameters": {
+            "Input": {
+               "Value": {
+                  "OutputUUID": "51068AFE-D862-4A41-9048-B13DC81CAB8A",
+                  "Type": "ActionOutput",
+                  "OutputName": "Matches"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "07D658DF-BA5C-4930-8772-F6595EE6A7E7"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": "if device is GPhone XR, offer choice to upload new shortcut, or simulate user update"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "AAEE7F48-CC56-49BD-8978-9A3834115D56",
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "OutputUUID": "07D658DF-BA5C-4930-8772-F6595EE6A7E7",
+                     "Type": "ActionOutput",
+                     "OutputName": "Count"
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "UUID": "14BD0DD0-FE37-4BB8-A66B-89A878BC73B1",
+            "WFNumberValue": "1",
+            "WFCondition": 0
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuPrompt": "A new version of the Travelator is ready. Be sure to let it REPLACE this Shortcut!",
+            "WFControlFlowMode": 0,
+            "WFMenuItems": [
+               "Okay, I will click “Add shortcut” and “Replace”",
+               "No, fuck off for some reason"
+            ],
+            "GroupingIdentifier": "A6844FBB-58CD-44A1-8054-92E4B60EF3E5"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 1,
+            "UUID": "7421823F-835D-4250-9FBB-14EA43A8336E",
+            "GroupingIdentifier": "A6844FBB-58CD-44A1-8054-92E4B60EF3E5",
+            "WFMenuItemTitle": "Okay, I will click “Add shortcut” and “Replace”"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getdevicedetails",
+         "WFWorkflowActionParameters": {
+            "UUID": "4C3D6EFD-9F66-46F5-99D8-383FC0986DF4"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "OutputUUID": "4C3D6EFD-9F66-46F5-99D8-383FC0986DF4",
+                     "Type": "ActionOutput",
+                     "OutputName": "Device Name"
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "WFConditionalActionString": "GPhone XR",
+            "GroupingIdentifier": "C30F1CB6-A614-47D4-B380-058AF96C17AA",
+            "WFCondition": 4
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "E2B99359-04CD-4395-A9B2-32985EF987FF",
+            "WFMenuItems": [
+               "GPhone",
+               "Other"
+            ],
+            "WFControlFlowMode": 0
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "GPhone",
+            "GroupingIdentifier": "E2B99359-04CD-4395-A9B2-32985EF987FF",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "com.apple.shortcuts.CreateShortcutiCloudLinkAction",
+         "WFWorkflowActionParameters": {
+            "UUID": "F760F1FF-9D0C-4B1C-8CBC-EC97E5479F24",
+            "shortcut": {
+               "Value": {
+                  "VariableName": "shortcut.shortcut",
+                  "Type": "Variable"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "AppIntentDescriptor": {
+               "TeamIdentifier": "0000000000",
+               "BundleIdentifier": "com.apple.shortcuts",
+               "Name": "Shortcuts",
+               "AppIntentIdentifier": "CreateShortcutiCloudLinkAction"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "F760F1FF-9D0C-4B1C-8CBC-EC97E5479F24",
+                  "Type": "ActionOutput",
+                  "OutputName": "Create iCloud Link for Shortcut"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "shareLink"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuPrompt": "Update version?",
+            "WFControlFlowMode": 0,
+            "WFMenuItems": [
+               "Yes",
+               "No"
+            ],
+            "GroupingIdentifier": "60C7D9F9-1755-4DB7-9813-855B20562756"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "Yes",
+            "GroupingIdentifier": "60C7D9F9-1755-4DB7-9813-855B20562756",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": {
+               "Value": {
+                  "string": "\uFFFC\n\uFFFC",
+                  "attachmentsByRange": {
+                     "{2, 1}": {
+                        "VariableName": "shareLink",
+                        "Type": "Variable"
+                     },
+                     "{0, 1}": {
+                        "Type": "ActionOutput",
+                        "OutputName": "Date",
+                        "OutputUUID": "3659807C-8753-4096-8763-EEEE8C1DDB50",
+                        "Aggrandizements": [
+                           {
+                              "WFDateFormatStyle": "Custom",
+                              "Type": "WFDateFormatVariableAggrandizement",
+                              "WFDateFormat": "yyyyMMdd_hhmmss",
+                              "WFISO8601IncludeTime": false
+                           }
+                        ]
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "ED55C757-6B48-436F-9832-C4A540A4AD62"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setclipboard",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "ED55C757-6B48-436F-9832-C4A540A4AD62",
+                  "Type": "ActionOutput",
+                  "OutputName": "Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "966FA766-64B7-4F6A-A57B-96AB997BC76D"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "No",
+            "GroupingIdentifier": "60C7D9F9-1755-4DB7-9813-855B20562756",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "60C7D9F9-1755-4DB7-9813-855B20562756",
+            "UUID": "6B78B841-F64D-41E5-9F1D-D8E01C55D091"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.notification",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "VariableName": "shareLink",
+                  "Type": "Variable"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFNotificationActionBody": {
+               "Value": {
+                  "string": "Clipped: \uFFFC",
+                  "attachmentsByRange": {
+                     "{9, 1}": {
+                        "Type": "Clipboard"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "6E62258D-178A-473F-A9C6-19BD9E8F27DF"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.openapp",
+         "WFWorkflowActionParameters": {
+            "WFSelectedApp": {
+               "BundleIdentifier": "com.apple.Notes",
+               "Name": "Notes",
+               "TeamIdentifier": "0000000000"
+            },
+            "WFAppIdentifier": "com.apple.mobilenotes",
+            "UUID": "70220B35-25C7-4C2E-A247-510CE4C30124"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.waittoreturn",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "Other",
+            "GroupingIdentifier": "E2B99359-04CD-4395-A9B2-32985EF987FF",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "E2B99359-04CD-4395-A9B2-32985EF987FF",
+            "UUID": "BFE6ABE0-2102-4A41-9C3B-02367DC2302A"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "C30F1CB6-A614-47D4-B380-058AF96C17AA",
+            "UUID": "896C209F-C394-4988-B68C-E3DCADB1CBF2"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+         "WFWorkflowActionParameters": {
+            "WFURLActionURL": "https://raw.githubusercontent.com/cubbage/modular/refs/heads/main/latest.txt",
+            "UUID": "1BF07826-D758-45F8-BBAE-A9C9C1FFBD12"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.documentpicker.save",
+         "WFWorkflowActionParameters": {
+            "WFFolder": {
+               "fileLocation": {
+                  "WFFileLocationType": "Shortcuts",
+                  "fileProviderDomainID": "com.apple.CloudDocs.iCloudDriveFileProvider/E6A0BF20-9467-4D78-9C88-E63CDFBF392B",
+                  "relativeSubpath": "",
+                  "appContainerBundleIdentifier": "com.apple.shortcuts",
+                  "crossDeviceItemID": "docs.icloud.com:com.apple.CloudDocs/documents/36809db38ad38ed4358e9e4e142ca8a4b42622ac"
+               },
+               "filename": "Documents",
+               "displayName": "Shortcuts"
+            },
+            "WFAskWhereToSave": false,
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "1BF07826-D758-45F8-BBAE-A9C9C1FFBD12",
+                  "Type": "ActionOutput",
+                  "OutputName": "URL"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "C97D84A0-5FA2-452D-84EE-4430F6F08ECA",
+            "WFSaveFileOverwrite": true,
+            "WFFileDestinationPath": {
+               "Value": {
+                  "string": "\uFFFC/latest_\uFFFC.txt",
+                  "attachmentsByRange": {
+                     "{9, 1}": {
+                        "Type": "ActionOutput",
+                        "OutputName": "Date",
+                        "OutputUUID": "3659807C-8753-4096-8763-EEEE8C1DDB50",
+                        "Aggrandizements": [
+                           {
+                              "WFDateFormatStyle": "Custom",
+                              "Type": "WFDateFormatVariableAggrandizement",
+                              "WFDateFormat": "yyyyMMdd_hhmmss",
+                              "WFISO8601IncludeTime": false
+                           }
+                        ]
+                     },
+                     "{0, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.detect.text",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "C97D84A0-5FA2-452D-84EE-4430F6F08ECA",
+                  "Type": "ActionOutput",
+                  "OutputName": "Saved File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "0868BD55-6708-4CDF-B263-AA16051F2D8D"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "VariableName": "shareLink",
+                     "Type": "Variable"
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "GroupingIdentifier": "A3719C94-2D33-411D-AB19-E6B64D887FF2",
+            "WFCondition": 100
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "0868BD55-6708-4CDF-B263-AA16051F2D8D",
+                  "Type": "ActionOutput",
+                  "OutputName": "Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "shareLinkOther"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.notification",
+         "WFWorkflowActionParameters": {
+            "WFNotificationActionBody": {
+               "Value": {
+                  "string": "share link:\uFFFC",
+                  "attachmentsByRange": {
+                     "{11, 1}": {
+                        "VariableName": "shareLinkOther",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "F046B31B-25BD-4C91-990C-25779AF208BC"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "A3719C94-2D33-411D-AB19-E6B64D887FF2",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "0868BD55-6708-4CDF-B263-AA16051F2D8D",
+                  "Type": "ActionOutput",
+                  "OutputName": "Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "shareLink"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "A3719C94-2D33-411D-AB19-E6B64D887FF2",
+            "UUID": "656FD3C6-2AB0-48DC-AE5E-5E912C726D74"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.openurl",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "VariableName": "shareLink",
+                  "Type": "Variable"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "6B30CAB3-04F0-4235-91A9-E5C0768B2EA4"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.waittoreturn",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.openapp",
+         "WFWorkflowActionParameters": {
+            "WFSelectedApp": {
+               "BundleIdentifier": "com.apple.shortcuts",
+               "Name": "Shortcuts",
+               "TeamIdentifier": "0000000000"
+            },
+            "WFAppIdentifier": "com.apple.shortcuts",
+            "UUID": "C47BCAAA-2697-4162-B379-055E43E56CD1"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getcurrentapp",
+         "WFWorkflowActionParameters": {
+            "UUID": "1E9DD6E6-F48E-483F-A3CF-09BC900AC675"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.notification",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "1E9DD6E6-F48E-483F-A3CF-09BC900AC675",
+                  "Type": "ActionOutput",
+                  "OutputName": "Current App"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFNotificationActionBody": "Re-run Travelator shortcut",
+            "UUID": "CE5C1A1A-D0F0-4CD3-8B05-D1E193487886"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.exit",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "No, fuck off for some reason",
+            "GroupingIdentifier": "A6844FBB-58CD-44A1-8054-92E4B60EF3E5",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "A6844FBB-58CD-44A1-8054-92E4B60EF3E5",
+            "UUID": "BE60F456-05B8-4DE1-992D-9EE228BEB672"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "AAEE7F48-CC56-49BD-8978-9A3834115D56",
+            "UUID": "BA31BCCC-B21D-4641-9DC0-8E906323E032"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "6D913572-722F-418C-81A3-1CA301E98714",
+            "UUID": "C202EEA2-5A34-4B36-882F-720746508F6F"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+         "WFWorkflowActionParameters": {
+            "WFCommentActionText": "stub for expansion into multi-guide management"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+         "WFWorkflowActionParameters": {
+            "WFURLActionURL": "https://raw.githubusercontent.com/cubbage/modular/refs/heads/main/hanoi_field_guide.html.zip",
+            "UUID": "20A62A8F-1274-4977-B2D9-96634F211009"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 0,
+            "GroupingIdentifier": "BAA9A00A-F176-43DA-B988-421C76459436",
+            "UUID": "5CBD32C9-BCE1-4BA3-B78E-25D4DB70E1A5"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.documentpicker.save",
+         "WFWorkflowActionParameters": {
+            "WFFolder": {
+               "fileLocation": {
+                  "WFFileLocationType": "Shortcuts",
+                  "fileProviderDomainID": "com.apple.CloudDocs.iCloudDriveFileProvider/E6A0BF20-9467-4D78-9C88-E63CDFBF392B",
+                  "relativeSubpath": "",
+                  "appContainerBundleIdentifier": "com.apple.shortcuts",
+                  "crossDeviceItemID": "docs.icloud.com:com.apple.CloudDocs/documents/36809db38ad38ed4358e9e4e142ca8a4b42622ac"
+               },
+               "filename": "Documents",
+               "displayName": "Shortcuts"
+            },
+            "WFAskWhereToSave": false,
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "20A62A8F-1274-4977-B2D9-96634F211009",
+                  "Type": "ActionOutput",
+                  "OutputName": "URL"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "D991AD5D-16B2-4AA3-91F8-65918E24CD93",
+            "WFSaveFileOverwrite": true,
+            "WFFileDestinationPath": {
+               "Value": {
+                  "string": "\uFFFC/page.zip",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.unzip",
+         "WFWorkflowActionParameters": {
+            "WFArchive": {
+               "Value": {
+                  "OutputUUID": "D991AD5D-16B2-4AA3-91F8-65918E24CD93",
+                  "Type": "ActionOutput",
+                  "OutputName": "Saved File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "C390A3FC-C570-4B90-8322-BDD9EF53E9F9"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.file.move",
+         "WFWorkflowActionParameters": {
+            "WFFolder": {
+               "fileLocation": {
+                  "WFFileLocationType": "Shortcuts",
+                  "fileProviderDomainID": "com.apple.CloudDocs.iCloudDriveFileProvider/E6A0BF20-9467-4D78-9C88-E63CDFBF392B",
+                  "relativeSubpath": "Travelator",
+                  "appContainerBundleIdentifier": "com.apple.shortcuts",
+                  "crossDeviceItemID": "docs.icloud.com:com.apple.CloudDocs/EB1D9093-F91D-441D-BB4C-037D8E09DAF9/d56279d006f7b9ff13de6f006c71d4cf0e215edf"
+               },
+               "filename": "Travelator",
+               "displayName": "Travelator"
+            },
+            "WFFile": {
+               "Value": {
+                  "OutputUUID": "C390A3FC-C570-4B90-8322-BDD9EF53E9F9",
+                  "Type": "ActionOutput",
+                  "OutputName": "Files"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "E9D4CCFC-A7EC-4E9C-AC83-13E14FE704ED",
+            "WFReplaceExisting": true
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.properties.files",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "E9D4CCFC-A7EC-4E9C-AC83-13E14FE704ED",
+                  "Type": "ActionOutput",
+                  "OutputName": "File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFContentItemPropertyName": "File Path",
+            "UUID": "6FFFDA5C-88BA-422F-94FE-14CCAB9C45D4"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.properties.files",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "E9D4CCFC-A7EC-4E9C-AC83-13E14FE704ED",
+                  "Type": "ActionOutput",
+                  "OutputName": "File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFContentItemPropertyName": "Name",
+            "UUID": "758F4F6E-765D-4707-8641-5C9EB11D790C"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.properties.files",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "E9D4CCFC-A7EC-4E9C-AC83-13E14FE704ED",
+                  "Type": "ActionOutput",
+                  "OutputName": "File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFContentItemPropertyName": "File Extension",
+            "UUID": "6D6CEEE4-FAB2-4242-86ED-E401E57B2952"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": {
+               "Value": {
+                  "string": "\uFFFC/\uFFFC.\uFFFC",
+                  "attachmentsByRange": {
+                     "{2, 1}": {
+                        "OutputUUID": "758F4F6E-765D-4707-8641-5C9EB11D790C",
+                        "Type": "ActionOutput",
+                        "OutputName": "Name"
+                     },
+                     "{4, 1}": {
+                        "OutputUUID": "6D6CEEE4-FAB2-4242-86ED-E401E57B2952",
+                        "Type": "ActionOutput",
+                        "OutputName": "File Extension"
+                     },
+                     "{0, 1}": {
+                        "OutputUUID": "EB7ED304-50F6-4EE2-A2E3-4B1FE337C2CA",
+                        "Type": "ActionOutput",
+                        "OutputName": "Travelator"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "FD82F66B-4CEA-400E-9C1A-C1ADCCB62F0F"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.documentpicker.open",
+         "WFWorkflowActionParameters": {
+            "WFGetFilePath": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "FD82F66B-4CEA-400E-9C1A-C1ADCCB62F0F",
+                        "Type": "ActionOutput",
+                        "OutputName": "Text"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "ADEE8629-19A3-4684-88BD-AC06FD6D0D7C"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "ADEE8629-19A3-4684-88BD-AC06FD6D0D7C",
+                  "Type": "ActionOutput",
+                  "OutputName": "File"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "page"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.showwebpage",
+         "WFWorkflowActionParameters": {
+            "WFURL": {
+               "Value": {
+                  "string": "\uFFFC",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "VariableName": "page",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "C99B3A9D-7752-4959-8F16-66EEB1953800"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.repeat.count",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "BAA9A00A-F176-43DA-B988-421C76459436",
+            "UUID": "572F7686-0924-4A0F-AA25-94CD7A679E5F"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.exit",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.output",
+         "WFWorkflowActionParameters": {
+            "WFOutput": "",
+            "UUID": "A63BBD65-3F77-4DC7-9F4A-BD456E4896AD"
+         }
+      }
+   ],
+   "WFWorkflowInputContentItemClasses": [
+      "WFAppContentItem",
+      "WFAppStoreAppContentItem",
+      "WFArticleContentItem",
+      "WFContactContentItem",
+      "WFDateContentItem",
+      "WFEmailAddressContentItem",
+      "WFFolderContentItem",
+      "WFGenericFileContentItem",
+      "WFImageContentItem",
+      "WFiTunesProductContentItem",
+      "WFLocationContentItem",
+      "WFDCMapsLinkContentItem",
+      "WFAVAssetContentItem",
+      "WFPDFContentItem",
+      "WFPhoneNumberContentItem",
+      "WFRichTextContentItem",
+      "WFSafariWebPageContentItem",
+      "WFStringContentItem",
+      "WFURLContentItem"
+   ],
+   "WFWorkflowImportQuestions": [],
+   "WFWorkflowTypes": [
+      "Watch"
+   ],
+   "WFQuickActionSurfaces": [],
+   "WFWorkflowHasShortcutInputVariables": false
+}
